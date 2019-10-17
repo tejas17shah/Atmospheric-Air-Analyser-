@@ -8,12 +8,12 @@ SoftwareSerial mySerial(5, 4);
 WiFiClient client; // Creating WiFiClient Object
 
 //ThingSpeak Channel's API Keys
-unsigned long myChannelNumber = 562139;
-const char * myWriteAPIKey = "XLAPZSG7SHOR1MQT";
+unsigned long myChannelNumber = enterChannelNumber;
+const char * myWriteAPIKey = "enterYourWriteKey";
 
 //Add your WiFi credentials here
-#define WIFI_SSID "Tejas Shah"
-#define WIFI_PASSWORD "Tejas1701"
+#define WIFI_SSID "yourSSID"
+#define WIFI_PASSWORD "yourPWD"
 
 
 void setup() {
@@ -53,11 +53,11 @@ void loop() {
     float H2S = root["H2S"];
     float VOC = root["VOC"];
 
-    Serial.print(CO2 / 1000, 5);  Serial.print(",");
+    Serial.print(CO2, 5);  Serial.print(",");
     Serial.print(CO, 5);  Serial.print(",");
-    Serial.print(CH4 * 1000, 5);  Serial.print(",");
-    Serial.print(NOx / 1200, 5);  Serial.print(",");
-    Serial.print(NH3 / 250, 5);  Serial.print(",");
+    Serial.print(CH4, 5);  Serial.print(",");
+    Serial.print(NOx, 5);  Serial.print(",");
+    Serial.print(NH3, 5);  Serial.print(",");
     Serial.print(H2S, 5); Serial.print(",");
     Serial.println(VOC, 5);
 
