@@ -35,10 +35,9 @@ void loop() {
   // Check WiFi Status
   while (mySerial.available())
   {
+    //To understand this section better, refer to the author: https://arduinojson.org/
     const size_t capacity = JSON_OBJECT_SIZE(7) + 100;
     DynamicJsonBuffer jsonBuffer(capacity);
-
-    //const char* json = Serial.rea
     JsonObject& root = jsonBuffer.parseObject(mySerial);
     if (!root.success()) {
       Serial.println("parseObject() failed");
@@ -60,7 +59,7 @@ void loop() {
     Serial.print(NH3, 5);  Serial.print(",");
     Serial.print(H2S, 5); Serial.print(",");
     Serial.println(VOC, 5);
-
+//Sending Gas Data to ThingSpeak
     ThingSpeak.setField(1, CO2);
     ThingSpeak.setField(2, CO);
     ThingSpeak.setField(3, CH4);
